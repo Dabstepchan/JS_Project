@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Space Objects Collection</title>
+</head>
+<body>
+  <header>
+    <h1 class="header">Space Objects Collection</h1>
+  </header>
+  <main>
+    <div class="welcome">
+      <h2>Добро пожаловать!</h2>
+      <label for="nameInput">Введите ваше имя:</label>
+      <input type="text" id="nameInput" placeholder="Имя">
+      <button id="nextButton">Далее</button>
+    </div>
+    <div id="apodContainer"></div>
+    <div class="asteroids-section">
+      <h2>Астероиды</h2>
+      <div class="controls">
+        <label for="hazardousCheckbox">
+          <input type="checkbox" id="hazardousCheckbox">
+          Показать только опасные астероиды
+        </label>
+        <select id="sortCriteriaSelect">
+          <option value="name">Сортировать по имени</option>
+          <option value="size">Сортировать по размеру</option>
+        </select>
+        <button id="createTableButton">Создать таблицу</button>
+      </div>
+      <table id="asteroidsTable">
+        <tbody id="asteroidsList"></tbody>
+      </table>
+    </div>
+    <div id="mars-photo-gallery" class="photo-gallery"></div>
+
+    <div id="mars-photo-modal" class="modal">
+      <span id="mars-photo-modal-close">&times;</span>
+      <img id="mars-photo-modal-image" src="" alt="Mars Photo">
+    </div>
+    
+  </main>
+  <script type="module" src="utils.js"></script>
+  <script type="module" src="api.js"></script>
+  <script type="module" src="ui.js"></script>
+  <script type="module" src="asteroids-ui.js"></script>
+  <script type="module" src="mars-ui.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
