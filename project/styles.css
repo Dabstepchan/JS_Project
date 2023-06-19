@@ -1,4 +1,3 @@
-/* style.css */
 @font-face {
   font-family: 'CodeNext-ExtraBoldItalic';
   src: url('fonts/CodeNext-ExtraBoldItalic.woff2') format('woff2'),
@@ -76,7 +75,7 @@ main {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
 }
 
 .youtube-video-container iframe {

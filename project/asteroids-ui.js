@@ -70,7 +70,6 @@ export class AsteroidsUI {
         tbody.appendChild(row);
       });
 
-      // Уберите следующую строку, если хотите, чтобы аккордеон закрывался после создания таблицы
       asteroidsAccordion.style.display = 'block';
     } catch (error) {
       console.error('Ошибка при загрузке списка астероидов:', error);

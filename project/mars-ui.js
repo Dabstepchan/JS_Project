@@ -10,7 +10,6 @@ class MarsPhotoGallery {
     this.currentPhotoIndex = 0;
     this.photos = [];
 
-    // Закрываем аккордеон по умолчанию
     this.closeAccordion();
   }
 
@@ -67,7 +66,6 @@ class MarsPhotoGallery {
       }
     });
 
-    // Добавляем обработчик события для заголовка аккордеона
     this.marsPhotoAccordionHeader.addEventListener('click', this.toggleAccordion.bind(this));
   }
 

@@ -28,7 +28,6 @@ class AstronomyPictureUI {
       imageElement.classList.add('apod-media');
       apodContainer.appendChild(imageElement);
 
-      // Add welcome message text
       const welcomeMessageElement = document.createElement('p');
       welcomeMessageElement.textContent = 'Приветственное изображение';
       apodContainer.appendChild(welcomeMessageElement);
