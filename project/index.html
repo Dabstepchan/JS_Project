@@ -18,9 +18,9 @@
       <button id="nextButton">Далее</button>
     </div>
     <div id="apodContainer"></div>
-    <div class="asteroids-section">
-      <h2>Астероиды</h2>
-      <div class="controls">
+    <div class="accordion" id="asteroidsAccordion" style="display: none;">
+      <h2 class="accordion-header">Астероиды</h2>
+      <div class="accordion-content controls">
         <label for="hazardousCheckbox">
           <input type="checkbox" id="hazardousCheckbox">
           Показать только опасные астероиды
@@ -32,10 +32,14 @@
         <button id="createTableButton">Создать таблицу</button>
       </div>
       <table id="asteroidsTable">
+        <thead></thead>
         <tbody id="asteroidsList"></tbody>
       </table>
     </div>
-    <div id="mars-photo-gallery" class="photo-gallery"></div>
+    <div class="accordion" id="marsAccordion" style="display: none;">
+      <h2 class="accordion-header-2">Галерея фотографий Марса</h2>
+      <div class="accordion-content photo-gallery" id="mars-photo-gallery"></div>
+    </div>
 
     <div id="mars-photo-modal" class="modal">
       <span id="mars-photo-modal-close">&times;</span>

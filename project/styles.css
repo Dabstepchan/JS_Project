@@ -1,3 +1,4 @@
+/* style.css */
 @font-face {
   font-family: 'CodeNext-ExtraBoldItalic';
   src: url('fonts/CodeNext-ExtraBoldItalic.woff2') format('woff2'),
@@ -106,7 +107,6 @@ main {
   transform: scale(1.1);
 }
 
-/* Добавляем стили для модального окна */
 .modal {
   position: fixed;
   top: 0;
@@ -135,8 +135,6 @@ main {
   cursor: pointer;
 }
 
-
-
 .photo-gallery img.thumbnail {
   width: 200px;
   height: auto;
@@ -148,27 +146,24 @@ main {
   transform: scale(1.1);
 }
 
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.accordion {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 12px;
 }
 
-.modal.show {
-  display: flex;
-}
-
-.modal img {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-}
-
-.modal span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #fff;
-  font-size: 30px;
+.accordion h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
   cursor: pointer;
+}
+
+.accordion .controls {
+  display: none;
+}
+
+.accordion.active .controls {
+  display: block;
 }

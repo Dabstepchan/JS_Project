@@ -4,6 +4,7 @@ import { sortObjects, filterObjects } from './utils.js';
 export class AsteroidsUI {
   constructor() {
     this.asteroidsData = [];
+    this.handleAsteroidsInteraction();
   }
 
   async fetchAsteroids() {
@@ -18,9 +19,9 @@ export class AsteroidsUI {
   displayAsteroids() {
     try {
       const asteroids = this.asteroidsData;
+      const asteroidsAccordion = document.getElementById('asteroidsAccordion');
       const asteroidsTable = document.getElementById('asteroidsTable');
       const sortCriteriaSelect = document.getElementById('sortCriteriaSelect');
-
       const tbody = asteroidsTable.querySelector('tbody');
       tbody.innerHTML = '';
 
@@ -68,15 +69,58 @@ export class AsteroidsUI {
 
         tbody.appendChild(row);
       });
+
+      // Уберите следующую строку, если хотите, чтобы аккордеон закрывался после создания таблицы
+      asteroidsAccordion.style.display = 'block';
     } catch (error) {
       console.error('Ошибка при загрузке списка астероидов:', error);
     }
   }
 
   handleAsteroidsInteraction() {
+    const nameInput = document.getElementById('nameInput');
+    const nextButton = document.getElementById('nextButton');
+    const createTableButton = document.getElementById('createTableButton');
+    const asteroidsAccordion = document.getElementById('asteroidsAccordion');
+
+    let isAccordionOpen = false;
+
+    nextButton.addEventListener('click', () => {
+      const name = nameInput.value.trim();
+      if (name !== '') {
+        const welcomeSection = document.querySelector('.welcome');
+        welcomeSection.style.display = 'none';
+        asteroidsAccordion.style.display = 'block';
+      }
+    });
+
+    createTableButton.addEventListener('click', () => {
+      this.fetchAsteroids();
+    });
+
+    const accordionHeader = asteroidsAccordion.querySelector('.accordion-header');
+    const accordionContent = asteroidsAccordion.querySelector('.accordion-content');
+    const createTableButtonInsideAccordion = accordionContent.querySelector('#createTableButton');
+    const asteroidsTable = document.getElementById('asteroidsTable');
+
+    accordionHeader.addEventListener('click', () => {
+      if (isAccordionOpen) {
+        accordionContent.style.display = 'none';
+        isAccordionOpen = false;
+        asteroidsTable.style.display = 'none';
+      } else {
+        accordionContent.style.display = 'block';
+        isAccordionOpen = true;
+        asteroidsTable.style.display = 'block';
+      }
+    });
+
+    createTableButtonInsideAccordion.addEventListener('click', () => {
+      this.fetchAsteroids();
+    });
+
     const hazardousCheckbox = document.getElementById('hazardousCheckbox');
     const sortCriteriaSelect = document.getElementById('sortCriteriaSelect');
-    const createTableButton = document.getElementById('createTableButton');
 
     hazardousCheckbox.addEventListener('change', () => {
       this.displayAsteroids();
@@ -84,16 +128,6 @@ export class AsteroidsUI {
 
     sortCriteriaSelect.addEventListener('change', () => {
       this.displayAsteroids();
-    });
-
-    createTableButton.addEventListener('click', () => {
-      this.fetchAsteroids();
-    });
-
-    sortCriteriaSelect.addEventListener('change', () => {
-      if (sortCriteriaSelect.value === 'size') {
-        this.displayAsteroids();
-      }
     });
   }
 }

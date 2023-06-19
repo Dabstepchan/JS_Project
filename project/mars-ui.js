@@ -3,11 +3,31 @@ import { getMarsPhotos } from './api.js';
 class MarsPhotoGallery {
   constructor() {
     this.marsPhotoGalleryElement = document.getElementById('mars-photo-gallery');
+    this.marsPhotoAccordionHeader = document.querySelector('.accordion-header-2');
     this.marsPhotoModalElement = document.getElementById('mars-photo-modal');
     this.marsPhotoModalImageElement = document.getElementById('mars-photo-modal-image');
     this.marsPhotoModalCloseButton = document.getElementById('mars-photo-modal-close');
     this.currentPhotoIndex = 0;
     this.photos = [];
+
+    // Закрываем аккордеон по умолчанию
+    this.closeAccordion();
+  }
+
+  openAccordion() {
+    this.marsPhotoGalleryElement.style.display = 'block';
+  }
+
+  closeAccordion() {
+    this.marsPhotoGalleryElement.style.display = 'none';
+  }
+
+  toggleAccordion() {
+    if (this.marsPhotoGalleryElement.style.display === 'none') {
+      this.openAccordion();
+    } else {
+      this.closeAccordion();
+    }
   }
 
   showNextPhoto() {
@@ -46,6 +66,9 @@ class MarsPhotoGallery {
         this.showNextPhoto();
       }
     });
+
+    // Добавляем обработчик события для заголовка аккордеона
+    this.marsPhotoAccordionHeader.addEventListener('click', this.toggleAccordion.bind(this));
   }
 
   async fetchAndDisplayMarsPhotos() {
@@ -82,5 +105,18 @@ class MarsPhotoGallery {
   }
 }
 
-const marsPhotoGallery = new MarsPhotoGallery();
-marsPhotoGallery.initialize();
+document.addEventListener('DOMContentLoaded', () => {
+  const nameInput = document.getElementById('nameInput');
+  const nextButton = document.getElementById('nextButton');
+  const marsAccordion = document.getElementById('marsAccordion');
+
+  nextButton.addEventListener('click', () => {
+    const name = nameInput.value.trim();
+
+    if (name !== '') {
+      marsAccordion.style.display = 'block';
+      const marsPhotoGallery = new MarsPhotoGallery();
+      marsPhotoGallery.initialize();
+    }
+  });
+});

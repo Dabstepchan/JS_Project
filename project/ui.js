@@ -27,6 +27,11 @@ class AstronomyPictureUI {
       imageElement.alt = mediaTitle;
       imageElement.classList.add('apod-media');
       apodContainer.appendChild(imageElement);
+
+      // Add welcome message text
+      const welcomeMessageElement = document.createElement('p');
+      welcomeMessageElement.textContent = 'Приветственное изображение';
+      apodContainer.appendChild(welcomeMessageElement);
     } else if (mediaType === 'video') {
       mediaUrl = data.url;
       const videoContainer = document.createElement('div');
